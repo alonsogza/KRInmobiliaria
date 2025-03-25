@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <label for="search-input">Buscar: </label>
+        <input type="search" id="search-input">
+    </div>
+    <hr>
+    <div class="item" data-title="Imagen 1" data-description="Renta">
+        <img src="assets/images/property-04.jpg" alt="Imagen 1">
+    </div>
+    <div class="item" data-title="Imagen 2" data-description="Casa">
+        <img src="assets/images/property-01.jpg" alt="Imagen 2">
+    </div>
+    <div class="item" data-title="Imagen 3" data-description="Terreno">
+        <img src="assets/images/property-02.jpg" alt="Imagen 3">
+    </div>
+    <div class="item" data-title="Imagen 4" data-description="Terreno">
+        <img src="assets/images/property-03.jpg" alt="Imagen 4">
+    </div>
+
+
+
+
+    <script>
+        const buscador = document.getElementById('search-input');
+        const items = document.querySelectorAll('.item');
+
+        // buscador.addEventListener('input', () => {
+        //     const filtro = buscador.value.toLowerCase();
+        //     items.forEach(item => {
+        //         const texto = item.getAttribute('data-title') + item.getAttribute('data-description');
+        //         item.style.display = texto.toLowerCase().includes(filtro) ? 'block' : 'none';
+        //     });
+        // });
+
+        // Ejemplo con debounce
+        let timeout;
+        buscador.addEventListener('input', () => {
+            clearTimeout(timeout);
+            timeout = setTimeout(() => {
+                // Lógica de filtrado aquí
+                const filtro = buscador.value.toLowerCase();
+                items.forEach(item => {
+                    const texto = item.getAttribute('data-title') + item.getAttribute('data-description');
+                    item.style.display = texto.toLowerCase().includes(filtro) ? 'block' : 'none';
+                });
+
+            }, 300);
+        });
+
+
+    </script>
+</body>
+</html>
